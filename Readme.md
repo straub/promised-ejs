@@ -2,7 +2,7 @@
 
 Embedded JavaScript templates.
 
-[![Build Status](https://travis-ci.org/visionmedia/ejs.png)](https://travis-ci.org/visionmedia/ejs)
+[![Build Status](https://travis-ci.org/straub/promised-ejs.png)](https://travis-ci.org/straub/promised-ejs)
 
 ## Installation
 

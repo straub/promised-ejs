@@ -1,15 +1,19 @@
 {
-  "name": "ejs",
-  "description": "Embedded JavaScript templates",
-  "version": "0.8.5",
-  "author": "TJ Holowaychuk <tj@vision-media.ca>",
-  "keywords": ["template", "engine", "ejs"],
+  "name": "promised-ejs",
+  "description": "Asynchronous embedded JavaScript templates",
+  "version": "0.0.1",
+  "author": {
+    "name": "David Straub",
+    "email": "himself@davidstraub.com",
+    "url": "http://www.davidstraub.com/"
+  },
+  "keywords": ["promise","async","template", "engine", "ejs"],
   "devDependencies": {
     "mocha": "*",
     "should": "*"
   },
   "main": "./lib/ejs.js",
-  "repository": "git://github.com/visionmedia/ejs.git",
+  "repository": "git://github.com/straub/promised-ejs.git",
   "scripts": {
     "test": "mocha --require should --reporter spec"
   }
