@@ -281,10 +281,11 @@ describe('filters', function(){
 describe('exceptions', function(){
   it('should produce useful stack traces', function(){
     return ejs.render(fixture('error.ejs'), { filename: 'error.ejs' })
-    .catch(function (err) {
-      err.path.should.equal('error.ejs');
-      err.stack.split('\n').slice(0, 8).join('\n').should.equal(fixture('error.out'));
-    });
+      .catch(function (err) {
+        err.should.have.property('path');
+        err.path.should.equal('error.ejs');
+        err.stack.split('\n').slice(0, 8).join('\n').should.equal(fixture('error.out'));
+      });
   });
 
   it('should not include __stack if compileDebug is false', function() {
