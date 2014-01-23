@@ -102,7 +102,7 @@ function compile() {
     buf += js;
     buf += '\n}); // module: ' + file + '\n';
   });
-  buf += '\n return require("promisedEJS");\n})();';
+  buf += '\n return require("promised-ejs");\n})();';
   fs.writeFile('promised-ejs.js', buf, function(err){
     if (err) throw err;
     console.log('  \033[90m create : \033[0m\033[36m%s\033[0m', 'promised-ejs.js');
