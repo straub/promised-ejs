@@ -1,5 +1,5 @@
 
-0.0.6 / 2014-01-23
+0.0.7 / 2014-01-23
 ==================
 
  * Fixed naming issue in compile script that caused an error in the client-side JS files
