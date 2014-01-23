@@ -1,13 +1,20 @@
 {
   "name": "promised-ejs",
   "description": "Asynchronous embedded JavaScript templates",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": {
     "name": "David Straub",
     "email": "himself@davidstraub.com",
     "url": "http://www.davidstraub.com/"
   },
-  "keywords": ["promise","async","template", "engine", "ejs", "promised-ejs"],
+  "keywords": [
+    "promise",
+    "async",
+    "template",
+    "engine",
+    "ejs",
+    "promised-ejs"
+  ],
   "dependencies": {
     "when": "~2.7.1"
   },
