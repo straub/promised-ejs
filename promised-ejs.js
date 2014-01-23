@@ -384,13 +384,15 @@ function rethrow(err, str, filename, lineno){
   }).join('\n');
 
   // Alter exception message
-  err.path = filename;
-  err.message = (filename || 'promised-ejs') + ':'
+  var message = (filename || 'promised-ejs') + ':'
     + lineno + '\n'
     + context + '\n\n'
     + err.message;
+
+  var newErr = err.constructor(message);
+  newErr.path = filename;
   
-  throw err;
+  throw newErr;
 }
 
 /**
@@ -661,5 +663,5 @@ exports.__express = function __express(path, options, fn) {
 
 }); // module: promised-ejs.js
 
- return require("promisedEJS");
+ return require("promised-ejs");
 })();
