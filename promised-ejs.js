@@ -418,6 +418,7 @@ var parse = exports.parse = function(str, options){
     if (false !== options._with) buf.push('\nwith (locals || {}) { (function(){ ');
     buf.push('\n buf.push(\'');
 
+    var compiledWithPromise = false;
     var lineno = 1;
 
     var consumeEOL = false;
@@ -463,6 +464,7 @@ var parse = exports.parse = function(str, options){
           buf.push(include.then(function (include) {
             return "', (function(){" + include + "})(), '";
           }));
+          compiledWithPromise = true;
           js = '';
         }
 
@@ -495,7 +497,9 @@ var parse = exports.parse = function(str, options){
     if (false !== options._with) buf.push("'); })();\n} ");
     else buf.push("');");
     buf.push("\nreturn when.all(buf).then(function (buf) { return buf.join(''); });");
-    return when.all(buf).then(function (buf) { return buf.join(''); });
+    return compiledWithPromise ?
+      when.all(buf).then(function (buf) { return buf.join(''); }) :
+      buf.join('');
   });
 };
 
