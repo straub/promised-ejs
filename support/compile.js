@@ -102,6 +102,7 @@ function compile() {
     buf += js;
     buf += '\n}); // module: ' + file + '\n';
   });
+  buf += '\n require.register("when", window.when ? { exports: window.when } : void 0); // when must already be global\n';
   buf += '\n return require("promised-ejs");\n})();';
   fs.writeFile('promised-ejs.js', buf, function(err){
     if (err) throw err;
