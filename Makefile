@@ -2,22 +2,22 @@
 SRC = $(shell find lib -name "*.js" -type f)
 UGLIFY_FLAGS = --no-mangle 
 
-all: ejs.min.js
+all: promised-ejs.min.js
 
 test:
 	@./node_modules/.bin/mocha \
 		--reporter spec
 
-ejs.js: $(SRC)
+promised-ejs.js: $(SRC)
 	@node support/compile.js $^
 
-ejs.min.js: ejs.js
+promised-ejs.min.js: promised-ejs.js
 	@uglifyjs $(UGLIFY_FLAGS) $< > $@ \
-		&& du ejs.min.js \
-		&& du ejs.js
+		&& du promised-ejs.min.js \
+		&& du promised-ejs.js
 
 clean:
-	rm -f ejs.js
-	rm -f ejs.min.js
+	rm -f promised-ejs.js
+	rm -f promised-ejs.min.js
 
 .PHONY: test
