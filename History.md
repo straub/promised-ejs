@@ -1,8 +1,9 @@
 
-0.0.2 / 2014-01-23
+0.0.3 / 2014-01-23
 ==================
 
  * Fixed naming issue in compile script that caused an error in the client-side JS files
+ * Fixed compile script to inject when via `require.register()`
 
 0.0.1 / 2014-01-22
 ==================

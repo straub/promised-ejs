@@ -663,5 +663,7 @@ exports.__express = function __express(path, options, fn) {
 
 }); // module: promised-ejs.js
 
+ require.register("when", window.when ? { exports: window.when } : void 0); // when must already be global
+
  return require("promised-ejs");
 })();
