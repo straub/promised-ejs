@@ -7,14 +7,19 @@
     "email": "himself@davidstraub.com",
     "url": "http://www.davidstraub.com/"
   },
-  "keywords": ["promise","async","template", "engine", "ejs"],
+  "keywords": ["promise","async","template", "engine", "ejs", "promised-ejs"],
+  "dependencies": {
+    "when": "~2.7.1"
+  },
   "devDependencies": {
     "mocha": "*",
-    "should": "*"
+    "chai": "*",
+    "mocha-as-promised": "*",
+    "chai-as-promised": "*"
   },
-  "main": "./lib/ejs.js",
+  "main": "./lib/promised-ejs.js",
   "repository": "git://github.com/straub/promised-ejs.git",
   "scripts": {
-    "test": "mocha --require should --reporter spec"
+    "test": "mocha --require chai --reporter spec"
   }
 }

@@ -1,2 +1,2 @@
 
-module.exports = require('./lib/ejs');
+module.exports = require('./lib/promised-ejs');

@@ -1,12 +1,12 @@
-# EJS
+# promisedEJS
 
-Embedded JavaScript templates.
+Embedded JavaScript templates, with promise-based compiling and rendering via [cujojs/when](https://github.com/cujojs/when/).
 
 [![Build Status](https://travis-ci.org/straub/promised-ejs.png)](https://travis-ci.org/straub/promised-ejs)
 
 ## Installation
 
-    $ npm install ejs
+    $ npm install promised-ejs
 
 ## Features
 
@@ -18,7 +18,7 @@ Embedded JavaScript templates.
   * Supports tag customization
   * Filter support for designer-friendly templates
   * Includes
-  * Client-side support
+  * Client-side support (requires [when library](https://github.com/cujojs/when/))
   * Newline slurping with `<% code -%>` or `<% -%>` or `<%= code -%>` or `<%- code -%>`
 
 ## Example
@@ -27,17 +27,37 @@ Embedded JavaScript templates.
 	    <h2><%= user.name %></h2>
     <% } %>
     
-## Try out a live example now
-
-<a href="https://runnable.com/ejs" target="_blank"><img src="https://runnable.com/external/styles/assets/runnablebtn.png" style="width:67px;height:25px;"></a>
 
 ## Usage
 
-    ejs.compile(str, options);
-    // => Function
+    var fn = promisedEJS.compile(str, options);
+    // => Promise for Function
+    
+    fn.then(function (fn) {
+        // Template rendering is promise-based too.
+        return fn({ foo: 'bar' });
+    })
+    .then(function (html) {
+        document.getElementById('foo').innerHTML = html;
+    });
 
-    ejs.render(str, options);
-    // => str
+    var html = promisedEJS.render(str, options);
+    // => Promise for str
+    
+    html.then(function (html) {
+        document.getElementById('foo').innerHTML = html;
+    });
+
+Or, with [Express](http://expressjs.com/):
+
+    var express = require('express'),
+        promisedEJS = require('promised-ejs'),
+        app = express();
+    
+    // Assign the promised-ejs engine to .ejs files.
+    app.engine('ejs', promisedEJS.__express);
+    
+    app.set('view engine', 'ejs');
 
 ## Options
 
@@ -46,7 +66,7 @@ Embedded JavaScript templates.
   - `scope`           Function execution context
   - `debug`           Output generated function body
   - `compileDebug`    When `false` no debug instrumentation is compiled
-  - `client`          Returns standalone compiled function
+  - `client`          Returns standalone compiled function (requires [when library](https://github.com/cujojs/when/))
   - `open`            Open tag, defaulting to "<%"
   - `close`           Closing tag, defaulting to "%>"
   - *                 All others are template-local variables
@@ -164,25 +184,6 @@ ejs.filters.last = function(obj) {
 
 ## License 
 
-(The MIT License)
+[MIT](http://straub.mit-license.org/)
 
-Copyright (c) 2009-2010 TJ Holowaychuk &lt;tj@vision-media.ca&gt;
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-'Software'), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+![Analytics](https://analytics.straubdev.com/piwik.php?idsite=6&rec=1&action_name=promised-ejs%2FREADME)
