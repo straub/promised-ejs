@@ -1,4 +1,11 @@
 
+0.0.11 / 2014-01-29
+==================
+
+ * Template function cleanup
+ * Fix incorrect name in rendering error
+ * Revoke support for node 0.6 (sorry)
+
 0.0.10 / 2014-01-23
 ==================
 

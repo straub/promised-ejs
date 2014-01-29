@@ -497,9 +497,9 @@ var parse = exports.parse = function(str, options){
     if (false !== options._with) buf.push("'); })();\n} ");
     else buf.push("');");
     buf.push(
-      "\nvar p = false;\nfor (var i = 0, len = buf.length; i < len; i++) {" +
+      "\nvar p = false; for (var i = 0, len = buf.length; i < len; i++) {" +
       " if (buf[i] && buf[i].then) { p = true; break; }" +
-      "}\n"
+      "}"
     );
     buf.push("\nreturn (p ? when.all(buf) : when(buf)).then(function(buf){ return buf.join('') });");
     return compiledWithPromise ? when.all(buf) : buf;
@@ -555,7 +555,7 @@ var compile = exports.compile = function(str, options){
   str = str.then(function (str) {
     return 'if (typeof when === "undefined") { when = whenDep; }\n' +
       'if (!when) {' +
-      '  throw new Error("promised-js templates require \'when\' to render.");' +
+      '  throw new Error("promised-ejs templates require \'when\' to render.");' +
       '}\n' +
       str;
   });
