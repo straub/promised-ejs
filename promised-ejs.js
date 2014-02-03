@@ -620,7 +620,7 @@ exports.render = function(str, options){
 };
 
 /**
- * Render an promised-ejs file at the given `path` and callback `fn(err, str)`.
+ * Render a promised-ejs file at the given `path` and callback `fn(err, str)`.
  *
  * @param {String} path
  * @param {Object|Function} options or callback
