@@ -3,6 +3,7 @@
 Embedded JavaScript templates, with promise-based compiling and rendering via [cujojs/when](https://github.com/cujojs/when/).
 
 [![Build Status](https://travis-ci.org/straub/promised-ejs.png)](https://travis-ci.org/straub/promised-ejs)
+[![Dependency Status](https://david-dm.org/straub/promised-ejs.png)](https://david-dm.org/straub/promised-ejs)
 
 ## Installation
 
