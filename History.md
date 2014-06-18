@@ -1,4 +1,4 @@
-0.0.18 / 2014-06-18
+0.0.19 / 2014-06-18
 ==================
 
  * Fix issue with rethrow() when using promises.
