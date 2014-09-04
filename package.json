@@ -16,7 +16,7 @@
     "promised-ejs"
   ],
   "dependencies": {
-    "when": "~2.8.0"
+    "when": "~3.0.0"
   },
   "devDependencies": {
     "mocha": "*",

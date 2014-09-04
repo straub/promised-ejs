@@ -168,24 +168,19 @@ describe('ejs.renderFile(path, options, fn)', function(){
 });
 
 describe('<%=', function(){
-  it('should escape <script>', function(){
-    return ejs.render('<%= name %>', { name: '<script>' })
-      .should.eventually.equal('&lt;script&gt;');
+
+  it('should escape &amp;<script>', function(){
+    ejs.render('<%= name %>', { name: '&nbsp;<script>' })
+      .should.eventually.equal('&amp;nbsp;&lt;script&gt;');
   });
+
   it("should escape '", function(){
-    return ejs.render('<%= name %>', { name: "The Jones's" })
+    ejs.render('<%= name %>', { name: "The Jones's" })
       .should.eventually.equal('The Jones&#39;s');
   });
-  it("shouldn't escape &amp;", function(){
-    return ejs.render('<%= name %>', { name: "Us &amp; Them" })
-      .should.eventually.equal('Us &amp; Them');
-  });
-  it("shouldn't escape &#93;", function(){
-    return ejs.render('<%= name %>', { name: "The Jones&#39;s" })
-      .should.eventually.equal('The Jones&#39;s');
-  });
+  
   it("should escape &foo_bar;", function(){
-    return ejs.render('<%= name %>', { name: "&foo_bar;" })
+    ejs.render('<%= name %>', { name: "&foo_bar;" })
       .should.eventually.equal('&amp;foo_bar;');
   });
 });
@@ -194,6 +189,16 @@ describe('<%-', function(){
   it('should not escape', function(){
     return ejs.render('<%- name %>', { name: '<script>' })
       .should.eventually.equal('<script>');
+  });
+
+  it('should terminate gracefully if no close tag is found', function(){
+    return ejs.compile('<h1>oops</h1><%- name ->')
+    .then(function () {
+      throw new Error('Expected parse failure');
+    })
+    .catch(function (err) {
+      err.message.should.equal('Could not find matching close tag "%>".');
+    });
   });
 });
 
@@ -208,6 +213,13 @@ describe('-%>', function(){
   it('should not produce newlines', function(){
     return ejs.render(fixture('no.newlines.ejs'), { users: users })
       .should.eventually.equal(fixture('no.newlines.html'));
+  });
+});
+
+describe('<%%', function(){
+  it('should produce literals', function(){
+    ejs.render('<%%- "foo" %>')
+      .should.eventually.equal('<%- "foo" %>');
   });
 });
 
@@ -275,6 +287,13 @@ describe('filters', function(){
     var items = delay(10, ['foo', 'bar', 'baz']);
     return ejs.render('<%=: items | reverse | first | reverse | capitalize %>', { items: items })
       .should.eventually.equal('Zab');
+  });
+
+  it('should accept promises as args', function(){
+    var prop = delay(10, 'name'),
+        str = delay(10, '::');
+    return ejs.render('<%=: users | map:prop | join:str %>', { users: users, prop: prop, str: str })
+      .should.eventually.equal('tobi::loki::jane');
   });
 });
 
