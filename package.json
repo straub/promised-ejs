@@ -1,7 +1,7 @@
 {
   "name": "promised-ejs",
   "description": "Asynchronous embedded JavaScript templates",
-  "version": "0.0.20",
+  "version": "0.0.19",
   "author": {
     "name": "David Straub",
     "email": "himself@davidstraub.com",
@@ -16,7 +16,7 @@
     "promised-ejs"
   ],
   "dependencies": {
-    "when": "~3.0.0"
+    "when": "^3.0.0"
   },
   "devDependencies": {
     "mocha": "*",
