@@ -1,7 +1,14 @@
+0.0.20 / 2014-09-04
+==================
+
+ * Add promise support for filter args
+ * Update with upstream changes from visionmedia/ejs
+ * Update dependency on cujojs/when
+
 0.0.19 / 2014-06-18
 ==================
 
- * Fix issue with rethrow() when using promises.
+ * Fix issue with rethrow() when using promises
 
 0.0.14 / 2014-02-03
 ==================
