@@ -1,3 +1,8 @@
+0.0.21 / 2014-09-04
+==================
+
+ * Update dependency on cujojs/when to use caret semver
+
 0.0.20 / 2014-09-04
 ==================
 
