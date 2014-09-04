@@ -291,9 +291,10 @@ describe('filters', function(){
 
   it('should accept promises as args', function(){
     var prop = delay(10, 'name'),
-        str = delay(10, '::');
-    return ejs.render('<%=: users | map:prop | join:str %>', { users: users, prop: prop, str: str })
-      .should.eventually.equal('tobi::loki::jane');
+        str = delay(10, '::'),
+        pattern = delay(10, (/::/g));
+    return ejs.render('<%=: users | map:prop | join:str | replace:pattern,"-" %>', { users: users, prop: prop, str: str, pattern: pattern })
+      .should.eventually.equal('tobi-loki-jane');
   });
 });
 
