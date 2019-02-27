@@ -19,10 +19,9 @@
     "when": ">=3.0.0-0 <4.0.0-0"
   },
   "devDependencies": {
-    "mocha": "*",
     "chai": "*",
-    "mocha-as-promised": "*",
-    "chai-as-promised": "*"
+    "chai-as-promised": "*",
+    "mocha": "*"
   },
   "main": "./lib/promised-ejs.js",
   "repository": "git://github.com/straub/promised-ejs.git",
