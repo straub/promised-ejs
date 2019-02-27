@@ -8,12 +8,9 @@ var ejs = require('..'),
     chai = require('chai'),
     assert = chai.assert,
     chaiAsPromised = require("chai-as-promised"),
-    mochaAsPromised = require("mocha-as-promised"),
     when = require('when'),
     delay = require('when/delay');
     require('when/monitor/console');
-
-mochaAsPromised();
 
 chai.use(chaiAsPromised);
 
