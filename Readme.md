@@ -1,3 +1,9 @@
+# DEPRECATED
+
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
+This repo is obsolete and unmaintained. It still exists only for historical purposes. Please consider using EJS itself with `async: true` instead.
+
 # promisedEJS
 
 Embedded JavaScript templates, with promise-based compiling and rendering via [cujojs/when](https://github.com/cujojs/when/).
