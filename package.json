@@ -21,7 +21,7 @@
   "devDependencies": {
     "chai": "*",
     "chai-as-promised": "*",
-    "mocha": "6.2.3"
+    "mocha": "10.2.0"
   },
   "main": "./lib/promised-ejs.js",
   "repository": "git://github.com/straub/promised-ejs.git",
